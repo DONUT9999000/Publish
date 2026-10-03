@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anime night sometime nextweek?????</title>
+<style>
+:root{
+  --bg1:#ffc2dc;--bg2:#ff8fc0;--ink:#7a1448;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  font-family:"Trebuchet MS",system-ui,sans-serif;
+  background:linear-gradient(160deg,var(--bg1),var(--bg2));
+  color:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:24px;
+}
+h1{font-size:clamp(30px,8vw,48px);margin:0 0 28px}
+.buttons{display:flex;gap:16px;justify-content:center}
+button{
+  font:inherit;font-weight:800;font-size:22px;border:0;border-radius:999px;
+  padding:14px 40px;cursor:pointer;
+}
+#yes{background:#ff3d8b;color:#fff;box-shadow:0 5px 0 #c4125f}
+#no{background:#fff0f7;color:#a3205f;box-shadow:0 5px 0 #e8a6c6}
+.win .buttons{display:none}
+</style>
+</head>
+<body id="page">
+  <h1 id="q" aria-live="polite">Anime night sometime nextweek?????</h1>
+  <div class="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+<script>
+var q=document.getElementById('q'),page=document.getElementById('page');
+var texts=["Anime night sometime nextweek?????","Are you sure?","LIKE REALLY SURE?"];
+var stage=0;
+function show(i){stage=i;q.textContent=texts[i]}
+function win(){page.classList.add('win');q.textContent="YIPIEEEE ANIME NIGHTTTTT"}
+
+// Screen 1: Yes wins, No starts the loop.
+// Follow-ups: Yes = still sure (loops), No = changed my mind (wins).
+document.getElementById('yes').onclick=function(){
+  if(stage===0)return win();
+  show(stage===1?2:1);
+};
+document.getElementById('no').onclick=function(){
+  if(stage===0)return show(1);
+  win();
+};
+</script>
+</body>
+</html>
